@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.UUID;
 
-public class AddVehicleActivity extends AppCompatActivity
+public class AddInstrumentsActivity extends AppCompatActivity
 {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -57,8 +57,8 @@ public class AddVehicleActivity extends AppCompatActivity
         double priceInput = Double.parseDouble(instrumentprice.getText().toString());
 
         //add info on new instrument into firebase
-        CISInstrument currVehicle = new CISInstrument(instrumenttype, instrumentIDInput, 0, 0, null);
-        fireStoreRef.collection("Vehicle").document(instrumentIDInput).set(currVehicle);
+        CISInstrument currInstrument = new CISInstrument(instrumenttype, instrumentIDInput, 0, 0, null);
+        fireStoreRef.collection("Vehicle").document(instrumentIDInput).set(currInstrument;
 
         //message to user
         Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully added instrument", Toast.LENGTH_LONG);
