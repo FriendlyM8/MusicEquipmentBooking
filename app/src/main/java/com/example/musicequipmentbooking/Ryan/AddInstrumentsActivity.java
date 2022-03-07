@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.MainActivity;
 import com.example.musicequipmentbooking.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,12 +53,12 @@ public class AddVehicleActivity extends AppCompatActivity
         System.out.println("Add Vehicle!");
         String TypeInput = instrumenttype.getText().toString();
         int BorrowInput = Integer.parseInt(instrumentborrowlimit.getText().toString());
-        String instrumentIDInput = instrumentID.getText().toString();
+        String instrumentIDInput = UUID.randomUUID().toString();
         double priceInput = Double.parseDouble(instrumentprice.getText().toString());
 
         //add info on new instrument into firebase
-        Vehicle currVehicle = new Vehicle(owner, TypeInput, instrumentIDInput, BorrowInput, open, priceInput);
-        fireStoreRef.collection("Vehicle").document(UUID.randomUUID().toString()).set(currVehicle);
+        CISInstrument currVehicle = new CISInstrument(instrumenttype, instrumentIDInput, 0, 0, null);
+        fireStoreRef.collection("Vehicle").document(instrumentIDInput).set(currVehicle);
 
         //message to user
         Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully added instrument", Toast.LENGTH_LONG);
