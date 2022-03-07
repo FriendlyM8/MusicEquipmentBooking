@@ -22,7 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-class InstrumentListActivity extends AppCompatActivity {
+public class InstrumentsListActivity extends AppCompatActivity {
 
     protected FirebaseAuth mAuth;
     protected FirebaseFirestore firestore;
