@@ -2,15 +2,69 @@ package com.example.musicequipmentbooking.Ryan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.musicequipmentbooking.MainActivity;
 import com.example.musicequipmentbooking.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AddInstrumentsActivity extends AppCompatActivity {
+import java.util.UUID;
+
+public class AddVehicleActivity extends AppCompatActivity
+{
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
+    private FirebaseFirestore fireStoreRef;
+
+    private String owner;
+    private boolean open;
+    private EditText instrumenttype;
+    private EditText instrumentborrowlimit;
+    private EditText instrumentID;
+    private EditText instrumentprice;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_instruments);
+        mAuth = FirebaseAuth.getInstance();
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        fireStoreRef = FirebaseFirestore.getInstance();
+
+        owner = mUser.getEmail();
+        open = true;
+
+        instrumenttype = (EditText) findViewById(R.id.InstrumentType);
+        instrumentborrowlimit = (EditText) findViewById(R.id.InstrumentBorrowLimit);
+        instrumentID = (EditText) findViewById(R.id.InstrumentID);
+        instrumentprice = (EditText) findViewById(R.id.InstrumentPrice);
+    }
+
+    public void add_instrument(View v)
+    {
+        System.out.println("Add Vehicle!");
+        String TypeInput = instrumenttype.getText().toString();
+        int BorrowInput = Integer.parseInt(instrumentborrowlimit.getText().toString());
+        String instrumentIDInput = instrumentID.getText().toString();
+        double priceInput = Double.parseDouble(instrumentprice.getText().toString());
+
+        //add info on new instrument into firebase
+        Vehicle currVehicle = new Vehicle(owner, TypeInput, instrumentIDInput, BorrowInput, open, priceInput);
+        fireStoreRef.collection("Vehicle").document(UUID.randomUUID().toString()).set(currVehicle);
+
+        //message to user
+        Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully added instrument", Toast.LENGTH_LONG);
+        messageUser.show();
+
+        //go to main page
+        Intent startPage = new Intent(this, MainActivity.class);
+        startActivity(startPage);
     }
 }
