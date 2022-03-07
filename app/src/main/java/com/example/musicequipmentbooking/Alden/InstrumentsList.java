@@ -1,6 +1,7 @@
 package com.example.musicequipmentbooking.Alden;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -22,11 +23,17 @@ public class InstrumentListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_list);
+        setContentView(R.layout.activity_instruments_list);
+
+        instrumentsList = new ArrayList<>();
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        recView = findViewById(R.id.vehiclesListTextView);
+        recView = findViewById(R.id.instrumentRecView);
+
+        InstrumentListBookAdapter myAdapter = new InstrumentListBookAdapter(instrumentsList);
+        recView.setAdapter(myAdapter);
+        recView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
