@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicEquipmentBooking">
         <activity
+            android:name=".Alden.InstrumentReturnActivity"
+            android:exported="false" />
+        <activity
             android:name=".Alden.InstrumentsList"
             android:exported="false" />
         <activity
