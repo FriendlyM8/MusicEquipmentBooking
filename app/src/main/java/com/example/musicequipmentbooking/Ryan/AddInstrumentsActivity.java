@@ -57,8 +57,8 @@ public class AddInstrumentsActivity extends AppCompatActivity
         double priceInput = Double.parseDouble(instrumentprice.getText().toString());
 
         //add info on new instrument into firebase
-        CISInstrument currInstrument = new CISInstrument(instrumenttype, instrumentIDInput, 0, 0, null);
-        fireStoreRef.collection("Vehicle").document(instrumentIDInput).set(currInstrument;
+        CISInstrument currInstrument = new CISInstrument(TypeInput, instrumentIDInput, 0, 0, null);
+        fireStoreRef.collection("Instruments").document(instrumentIDInput).set(currInstrument);
 
         //message to user
         Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully added instrument", Toast.LENGTH_LONG);

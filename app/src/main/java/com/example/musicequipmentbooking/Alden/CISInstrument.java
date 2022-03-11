@@ -5,13 +5,17 @@ public class CISInstrument {
     private String instrumentID;
     private int instrumentDaysRequest;
     private int instrumentDaysBorrowed;
+    private int instrumentBorrowLimit;
+    private int instrumentPrice;
     private String instrumentBorrower;
 
-    public CISInstrument(String instrumentType, String instrumentID, int instrumentDaysRequest, int instrumentDaysBorrowed, String instrumentBorrower) {
+    public CISInstrument(String instrumentType, String instrumentID, int instrumentDaysRequest, int instrumentDaysBorrowed, int instrumentBorrowLimit, int instrumentPrice, String instrumentBorrower) {
         this.instrumentType = instrumentType;
         this.instrumentID = instrumentID;
         this.instrumentDaysRequest = instrumentDaysRequest;
         this.instrumentDaysBorrowed = instrumentDaysBorrowed;
+        this.instrumentBorrowLimit = instrumentBorrowLimit;
+        this.instrumentPrice = instrumentPrice;
         this.instrumentBorrower = instrumentBorrower;
     }
 
@@ -47,6 +51,22 @@ public class CISInstrument {
         this.instrumentDaysBorrowed = instrumentDaysBorrowed;
     }
 
+    public int getInstrumentBorrowLimit() {
+        return instrumentBorrowLimit;
+    }
+
+    public void setInstrumentBorrowLimit(int instrumentBorrowLimit) {
+        this.instrumentBorrowLimit = instrumentBorrowLimit;
+    }
+
+    public int getInstrumentPrice() {
+        return instrumentPrice;
+    }
+
+    public void setInstrumentPrice(int instrumentPrice) {
+        this.instrumentPrice = instrumentPrice;
+    }
+
     public String getInstrumentBorrower() {
         return instrumentBorrower;
     }
@@ -62,6 +82,8 @@ public class CISInstrument {
                 ", instrumentID='" + instrumentID + '\'' +
                 ", instrumentDaysRequest=" + instrumentDaysRequest +
                 ", instrumentDaysBorrowed=" + instrumentDaysBorrowed +
+                ", instrumentBorrowLimit=" + instrumentBorrowLimit +
+                ", instrumentPrice=" + instrumentPrice +
                 ", instrumentBorrower='" + instrumentBorrower + '\'' +
                 '}';
     }
