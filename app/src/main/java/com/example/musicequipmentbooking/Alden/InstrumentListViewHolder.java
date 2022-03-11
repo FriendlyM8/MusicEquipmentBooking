@@ -8,14 +8,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicequipmentbooking.R;
 
-public class InstrumentListViewHolder extends RecyclerView.ViewHolder {
+public class InstrumentListViewHolder extends RecyclerView.ViewHolder
+{
     protected TextView instrumentText;
+    protected TextView instrumentQuantity;
 
-    public InstrumentListViewHolder(@NonNull View itemView) {
+    public InstrumentListViewHolder(@NonNull View itemView)
+    {
         super(itemView);
 
-        instrumentText = itemView.findViewById(R.id.instrumentTextView);
-
-
+        instrumentText = itemView.findViewById(R.id.insRecTextName);
+        instrumentQuantity = itemView.findViewById(R.id.insRecTextQuantity)
     }
 }

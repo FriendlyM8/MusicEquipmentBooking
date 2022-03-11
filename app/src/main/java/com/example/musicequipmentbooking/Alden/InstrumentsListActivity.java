@@ -59,6 +59,9 @@ public class InstrumentsListActivity extends AppCompatActivity {
                         instrumentsListString.add("Instrument Type: "+ curInstrument.getInstrumentType() +"Instrument Days Requested: "+ curInstrument.getInstrumentDaysRequest() +"Instrument Days Borrowed: "+ curInstrument.getInstrumentDaysBorrowed()+ "Current Borrower: "+ curInstrument.getInstrumentBorrower());
                         instrumentsList.add(curInstrument);
                     }
+
+                    recView.setAdapter(myAdapter);
+                    recView.setLayoutManager(new LinearLayoutManager(InstrumentsListActivity.this));
                 }
                 else{
                     Log.d("Get Instrument", "Failed to get Instruments", task.getException());

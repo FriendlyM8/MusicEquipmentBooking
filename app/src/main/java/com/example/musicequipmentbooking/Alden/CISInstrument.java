@@ -75,6 +75,12 @@ public class CISInstrument {
         this.instrumentBorrower = instrumentBorrower;
     }
 
+    // number of quantity available for the instrument, need to update the method
+    public int getQuantity()
+    {
+        return 1;
+    }
+
     @Override
     public String toString() {
         return "CISInstrument{" +
