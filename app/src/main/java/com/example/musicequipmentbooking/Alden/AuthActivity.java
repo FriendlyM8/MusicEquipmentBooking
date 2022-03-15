@@ -97,10 +97,14 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
                     updateUI(null);
                     FirebaseUser user = mAuth.getCurrentUser();
                     String userIDString = user.getUid();
-
-                    CISUser newUser = new CISUser(emailString, passwordString, userIDString, userType, 0, null);
-
-                    firestore.collection("Users").document(newUser.getUserID()).set(newUser);
+                    if(userType.equals("Teacher")){
+                        CISTeacher newUser = new CISTeacher(emailString, passwordString, userIDString, userType);
+                        firestore.collection("Users").document(newUser.getUserID()).set(newUser);
+                    }
+                    if(userType.equals("Student")){
+                        CISUser newUser = new CISUser(emailString, passwordString, userIDString, userType, 0, null);
+                        firestore.collection("Users").document(newUser.getUserID()).set(newUser);
+                    }
 
                 } else {
                     Log.w("SIGN UP", "createUserWithEmail:failure", task.getException());

@@ -7,14 +7,12 @@ public class CISTeacher{
     private String password;
     private String userID;
     private String userType;
-    private String title;
 
-    public CISTeacher(String email, String password, String userID, String userType, String title) {
+    public CISTeacher(String email, String password, String userID, String userType) {
         this.email = email;
         this.password = password;
         this.userID = userID;
         this.userType = userType;
-        this.title = title;
     }
 
     public String getEmail() {
@@ -49,14 +47,6 @@ public class CISTeacher{
         this.userType = userType;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     @Override
     public String toString() {
         return "CISTeacher{" +
@@ -64,7 +54,6 @@ public class CISTeacher{
                 ", password='" + password + '\'' +
                 ", userID='" + userID + '\'' +
                 ", userType='" + userType + '\'' +
-                ", title='" + title + '\'' +
                 '}';
     }
 }
