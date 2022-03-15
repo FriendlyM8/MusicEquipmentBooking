@@ -23,7 +23,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
-}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class UserProfileActivity extends AppCompatActivity {
                     displayUserText.setText("Hello,\n" + email);
                 }
             }
-    }
+    });
 
 
-}
+}}
