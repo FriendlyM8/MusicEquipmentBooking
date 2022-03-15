@@ -13,7 +13,7 @@
             android:name=".Adrian.TeacherProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Alden.UserProfileActivity"
+            android:name=".Ryan.UserProfileActivity"
             android:exported="false" />
         <activity
             android:name=".Alden.InstrumentReturnActivity"
