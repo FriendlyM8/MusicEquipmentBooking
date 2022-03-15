@@ -107,8 +107,14 @@ public class AuthActivity extends AppCompatActivity {
     //If user is signed in or created, goes to next screen
     public void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            if(userType.equals("Teacher")){
+                Intent intent = new Intent(this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+            if(userType.equals("Student")){
+                Intent intent = new Intent(this, UserProfileActivity.class);
+                startActivity(intent);
+            }
         }
     }
 }
