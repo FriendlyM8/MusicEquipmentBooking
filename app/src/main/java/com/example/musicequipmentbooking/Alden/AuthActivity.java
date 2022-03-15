@@ -7,10 +7,15 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.musicequipmentbooking.Adrian.TeacherProfileActivity;
 import com.example.musicequipmentbooking.R;
 import com.example.musicequipmentbooking.Ryan.UserProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AuthActivity extends AppCompatActivity {
+public class AuthActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
@@ -39,6 +44,13 @@ public class AuthActivity extends AppCompatActivity {
 
         emailField = findViewById(R.id.addEmailText);
         passwordField = findViewById(R.id.addPasswordText);
+
+        Spinner spinner = findViewById(R.id.userTypeSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.userTypes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+        userType = spinner.getSelectedItem().toString();
     }
 
     /**
@@ -76,7 +88,6 @@ public class AuthActivity extends AppCompatActivity {
         System.out.println("Sign Up");
         String emailString = emailField.getText().toString();
         String passwordString = passwordField.getText().toString();
-        String userTypeString = userType;
 
         mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -87,7 +98,7 @@ public class AuthActivity extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     String userIDString = user.getUid();
 
-                    CISUser newUser = new CISUser(emailString, passwordString, userIDString, userTypeString, 0, null);
+                    CISUser newUser = new CISUser(emailString, passwordString, userIDString, userType, 0, null);
 
                     firestore.collection("Users").document(newUser.getUserID()).set(newUser);
 
@@ -103,7 +114,7 @@ public class AuthActivity extends AppCompatActivity {
     public void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
             if(userType.equals("Teacher")){
-                Intent intent = new Intent(this, UserProfileActivity.class);
+                Intent intent = new Intent(this, TeacherProfileActivity.class);
                 startActivity(intent);
             }
             if(userType.equals("Student")){
@@ -111,5 +122,16 @@ public class AuthActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
