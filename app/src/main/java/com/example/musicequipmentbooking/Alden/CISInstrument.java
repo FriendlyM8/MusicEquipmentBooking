@@ -6,17 +6,19 @@ public class CISInstrument {
     private int instrumentDaysRequest;
     private int instrumentDaysBorrowed;
     private int instrumentBorrowLimit;
-    private int instrumentPrice;
     private String instrumentBorrower;
+    private boolean borrowedStatus;
+    private boolean returnedChecked;
 
-    public CISInstrument(String instrumentType, String instrumentID, int instrumentDaysRequest, int instrumentDaysBorrowed, int instrumentBorrowLimit, int instrumentPrice, String instrumentBorrower) {
+    public CISInstrument(String instrumentType, String instrumentID, int instrumentDaysRequest, int instrumentDaysBorrowed, int instrumentBorrowLimit, String instrumentBorrower, boolean borrowedStatus, boolean returnedChecked) {
         this.instrumentType = instrumentType;
         this.instrumentID = instrumentID;
         this.instrumentDaysRequest = instrumentDaysRequest;
         this.instrumentDaysBorrowed = instrumentDaysBorrowed;
         this.instrumentBorrowLimit = instrumentBorrowLimit;
-        this.instrumentPrice = instrumentPrice;
         this.instrumentBorrower = instrumentBorrower;
+        this.borrowedStatus = borrowedStatus;
+        this.returnedChecked = returnedChecked;
     }
 
     public String getInstrumentType() {
@@ -59,14 +61,6 @@ public class CISInstrument {
         this.instrumentBorrowLimit = instrumentBorrowLimit;
     }
 
-    public int getInstrumentPrice() {
-        return instrumentPrice;
-    }
-
-    public void setInstrumentPrice(int instrumentPrice) {
-        this.instrumentPrice = instrumentPrice;
-    }
-
     public String getInstrumentBorrower() {
         return instrumentBorrower;
     }
@@ -75,10 +69,20 @@ public class CISInstrument {
         this.instrumentBorrower = instrumentBorrower;
     }
 
-    // number of quantity available for the instrument, need to update the method
-    public int getQuantity()
-    {
-        return 1;
+    public boolean isBorrowedStatus() {
+        return borrowedStatus;
+    }
+
+    public void setBorrowedStatus(boolean borrowedStatus) {
+        this.borrowedStatus = borrowedStatus;
+    }
+
+    public boolean isReturnedChecked() {
+        return returnedChecked;
+    }
+
+    public void setReturnedChecked(boolean returnedChecked) {
+        this.returnedChecked = returnedChecked;
     }
 
     @Override
@@ -89,8 +93,9 @@ public class CISInstrument {
                 ", instrumentDaysRequest=" + instrumentDaysRequest +
                 ", instrumentDaysBorrowed=" + instrumentDaysBorrowed +
                 ", instrumentBorrowLimit=" + instrumentBorrowLimit +
-                ", instrumentPrice=" + instrumentPrice +
                 ", instrumentBorrower='" + instrumentBorrower + '\'' +
+                ", borrowedStatus=" + borrowedStatus +
+                ", returnedChecked=" + returnedChecked +
                 '}';
     }
 }

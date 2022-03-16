@@ -78,7 +78,7 @@ public class InstrumentsListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void returnButton(View v){
+    public void backButton(View v){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

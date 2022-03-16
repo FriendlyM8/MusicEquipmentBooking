@@ -18,6 +18,6 @@ public class InstrumentListViewHolder extends RecyclerView.ViewHolder
         super(itemView);
 
         instrumentText = itemView.findViewById(R.id.insRecTextName);
-        instrumentQuantity = itemView.findViewById(R.id.insRecTextQuantity)
+        instrumentQuantity = itemView.findViewById(R.id.insRecTextQuantity);
     }
 }
