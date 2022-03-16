@@ -83,7 +83,4 @@ public class InstrumentsListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-
 }
