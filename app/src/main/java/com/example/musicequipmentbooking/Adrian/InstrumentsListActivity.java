@@ -1,4 +1,4 @@
-package com.example.musicequipmentbooking.Alden;
+package com.example.musicequipmentbooking.Adrian;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.musicequipmentbooking.Alden.AuthActivity;
+import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.MainActivity;
 import com.example.musicequipmentbooking.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,7 +44,7 @@ public class InstrumentsListActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         recView = findViewById(R.id.instrumentRecView);
 
-        InstrumentListBookAdapter myAdapter = new InstrumentListBookAdapter(instrumentsList);
+        InstrumentListAdapter myAdapter = new InstrumentListAdapter(instrumentsList);
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
         Log.d("RecyclerView", "Rec View Success");

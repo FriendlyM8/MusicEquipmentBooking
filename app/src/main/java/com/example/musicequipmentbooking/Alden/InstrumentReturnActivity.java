@@ -10,8 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.musicequipmentbooking.Adrian.InstrumentListAdapter;
 import com.example.musicequipmentbooking.Adrian.TeacherProfileActivity;
-import com.example.musicequipmentbooking.MainActivity;
 import com.example.musicequipmentbooking.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,7 +42,7 @@ public class InstrumentReturnActivity extends AppCompatActivity {
         instrumentsList = new ArrayList<>();
         instrumentReturnedString = new ArrayList();
 
-        InstrumentListBookAdapter myAdapter = new InstrumentListBookAdapter(instrumentsList);
+        InstrumentListAdapter myAdapter = new InstrumentListAdapter(instrumentsList);
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
         Log.d("RecyclerView", "Rec View Success");
@@ -70,7 +70,7 @@ public class InstrumentReturnActivity extends AppCompatActivity {
     }
 
 
-    @Override
+ //   @Override
     public void onInstrumentClick(int position) {
         instrumentsList.get(position);
         Intent intent = new Intent(this, InstrumentReturnActivity.class);

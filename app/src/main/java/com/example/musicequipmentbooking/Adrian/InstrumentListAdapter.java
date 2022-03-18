@@ -1,4 +1,4 @@
-package com.example.musicequipmentbooking.Alden;
+package com.example.musicequipmentbooking.Adrian;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,15 +7,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicequipmentbooking.Adrian.InstrumentListViewHolder;
+import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.R;
 
 import java.util.ArrayList;
 
-public class InstrumentListBookAdapter extends RecyclerView.Adapter<InstrumentListViewHolder> {
+public class InstrumentListAdapter extends RecyclerView.Adapter<InstrumentListViewHolder> {
     ArrayList<String> mData;
     ArrayList<CISInstrument> allInstruments;
 
-    public InstrumentListBookAdapter(ArrayList<CISInstrument> data)
+    public InstrumentListAdapter(ArrayList<CISInstrument> data)
     {
         allInstruments = data;
     }
@@ -34,7 +36,7 @@ public class InstrumentListBookAdapter extends RecyclerView.Adapter<InstrumentLi
     {
         CISInstrument c = allInstruments.get(position);
         holder.instrumentText.setText("  "+c.getInstrumentType()+"  ");
-        holder.instrumentQuantity.setText("  "+c.getQuantity());
+       // holder.instrumentQuantity.setText("  "+c.getQuantity());
     }
 
     @Override

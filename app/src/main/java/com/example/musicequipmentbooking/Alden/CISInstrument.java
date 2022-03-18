@@ -10,6 +10,11 @@ public class CISInstrument {
     private boolean borrowedStatus;
     private boolean returnedChecked;
 
+    public CISInstrument()
+    {
+      //blank constructor for RecyclerView OnClick listener
+    }
+
     public CISInstrument(String instrumentType, String instrumentID, int instrumentDaysRequest, int instrumentDaysBorrowed, int instrumentBorrowLimit, String instrumentBorrower, boolean borrowedStatus, boolean returnedChecked) {
         this.instrumentType = instrumentType;
         this.instrumentID = instrumentID;

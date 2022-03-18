@@ -17,7 +17,7 @@ public class CheckOut {
     TextView remainCapacity;
     TextView discountedPrice;
     TextView open;
-
+/**
     Vehicle choose;
 
     @Override
@@ -62,4 +62,5 @@ public class CheckOut {
         Intent startActivity = new Intent(this, MainActivity.class);
         startActivity(startActivity);
     }
+    **/
 }
