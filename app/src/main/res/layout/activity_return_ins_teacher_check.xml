@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Adrian.ReturnInsTeacherCheckActivity">
 
+
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"

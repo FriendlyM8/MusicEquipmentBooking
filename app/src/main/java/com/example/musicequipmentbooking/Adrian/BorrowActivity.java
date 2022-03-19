@@ -130,4 +130,5 @@ public class BorrowActivity extends AppCompatActivity {
         Intent intent = new Intent(this, InstrumentsListActivity.class);
         startActivity(intent);
     }
+
 }

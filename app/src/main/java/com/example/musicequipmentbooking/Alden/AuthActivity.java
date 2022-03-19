@@ -55,6 +55,7 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
     }
 
+
     /**
      * This method allows users to sign in with their emails and password.
      *
