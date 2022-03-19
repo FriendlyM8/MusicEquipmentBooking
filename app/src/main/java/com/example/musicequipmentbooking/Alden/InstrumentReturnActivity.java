@@ -30,6 +30,7 @@ public class InstrumentReturnActivity extends AppCompatActivity {
     RecyclerView recView;
     ArrayList<CISInstrument> instrumentsList;
     ArrayList<String> instrumentReturnedString;
+    private InstrumentListAdapter.RecyclerViewClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class InstrumentReturnActivity extends AppCompatActivity {
         instrumentsList = new ArrayList<>();
         instrumentReturnedString = new ArrayList();
 
-        InstrumentListAdapter myAdapter = new InstrumentListAdapter(instrumentsList);
+        InstrumentListAdapter myAdapter = new InstrumentListAdapter(instrumentsList, listener);
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
         Log.d("RecyclerView", "Rec View Success");
@@ -90,8 +91,5 @@ public class InstrumentReturnActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TeacherProfileActivity.class);
         startActivity(intent);
     }
-
-
-
 
 }

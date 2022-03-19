@@ -7,12 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.Alden.CISUser;
 import com.example.musicequipmentbooking.R;
+import com.example.musicequipmentbooking.Ryan.UserProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -22,11 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-/**
- * This class allows teacher to click a button to confirm instruments returned by students
- */
-public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
-
+public class BorrowActivity extends AppCompatActivity {
     // define local variables
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -42,16 +38,16 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_return_ins_teacher_check);
+        setContentView(R.layout.activity_borrow);
 
         // retrieve current user
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
         // link layout items to parameter
-        TextView typeText = findViewById(R.id.RC_Ins_type);
-        TextView idText = findViewById(R.id.RC_ins_id);
-        TextView daysText = findViewById(R.id.RC_days_borrowed);
+        TextView typeText = findViewById(R.id.BI_id);
+        TextView idText = findViewById(R.id.BI_id);
+        TextView daysText = findViewById(R.id.BI_days_limit);
 
         // Bundle the data from RecyclerView
         Bundle extras = getIntent().getExtras();
@@ -109,7 +105,8 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
                 });
 
         // once done, navigate to Return Instrument Info screen
-        Intent intent = new Intent(this, ReturnInsTeacherActivity.class);
+        // can add toast to show borrowed successfully
+        Intent intent = new Intent(this, UserProfileActivity.class);
         startActivity(intent);
     }
 
@@ -127,5 +124,10 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
                     }
                 });
         Log.d(TAG, "DocumentSnapshot updated with ID: " + docID);
+    }
+
+    public void backButton(View v){
+        Intent intent = new Intent(this, InstrumentsListActivity.class);
+        startActivity(intent);
     }
 }

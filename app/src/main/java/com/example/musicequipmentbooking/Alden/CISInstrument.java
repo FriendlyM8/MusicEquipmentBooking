@@ -1,5 +1,8 @@
 package com.example.musicequipmentbooking.Alden;
 
+/**
+ * This is the instrument class
+ */
 public class CISInstrument {
     private String instrumentType;
     private String instrumentID;

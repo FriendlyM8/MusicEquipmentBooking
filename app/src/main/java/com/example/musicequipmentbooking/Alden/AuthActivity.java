@@ -25,6 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * This class is for login page
+ */
 public class AuthActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private FirebaseAuth mAuth;
@@ -33,6 +36,7 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
     protected EditText emailField;
     protected EditText passwordField;
     protected String userType;
+    protected Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +49,10 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         emailField = findViewById(R.id.addEmailText);
         passwordField = findViewById(R.id.addPasswordText);
 
-        Spinner spinner = findViewById(R.id.userTypeSpinner);
+        spinner = findViewById(R.id.userTypeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.userTypes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-        userType = spinner.getSelectedItem().toString();
     }
 
     /**
@@ -97,6 +99,7 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
                     updateUI(null);
                     FirebaseUser user = mAuth.getCurrentUser();
                     String userIDString = user.getUid();
+
                     if(userType.equals("Teacher")){
                         CISTeacher newUser = new CISTeacher(emailString, passwordString, userIDString, userType);
                         firestore.collection("Users").document(newUser.getUserID()).set(newUser);
@@ -115,8 +118,12 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     //If user is signed in or created, goes to next screen
-    public void updateUI(FirebaseUser currentUser) {
-        if (currentUser != null) {
+    public void updateUI(FirebaseUser currentUser)
+    {
+        if (currentUser != null)
+        {
+            spinner.setOnItemSelectedListener(this);
+            userType = spinner.getSelectedItem().toString();
             if(userType.equals("Teacher")){
                 Intent intent = new Intent(this, TeacherProfileActivity.class);
                 startActivity(intent);

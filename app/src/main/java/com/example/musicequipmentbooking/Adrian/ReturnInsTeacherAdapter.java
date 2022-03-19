@@ -15,6 +15,9 @@ import com.example.musicequipmentbooking.R;
 
 import java.util.ArrayList;
 
+/**
+ * This class is used by recycler view, it includes the ViewHolder and ClickListener
+ */
 public class ReturnInsTeacherAdapter extends RecyclerView.Adapter<ReturnInsTeacherAdapter.ReturnInsTeacherActivityHolder> {
 
     // defines local variable

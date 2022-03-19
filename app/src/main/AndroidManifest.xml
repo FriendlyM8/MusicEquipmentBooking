@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicEquipmentBooking">
         <activity
+            android:name=".Adrian.BorrowActivity"
+            android:exported="true" />
+        <activity
             android:name=".Adrian.ReturnInsTeacherCheckActivity"
             android:exported="true" />
         <activity

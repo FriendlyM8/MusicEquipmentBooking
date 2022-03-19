@@ -2,6 +2,9 @@ package com.example.musicequipmentbooking.Alden;
 
 import java.util.ArrayList;
 
+/**
+ * This is class for CIS Users
+ */
 public class CISUser {
     private String email;
     private String password;

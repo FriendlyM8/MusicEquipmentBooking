@@ -19,6 +19,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ * This class shows teacher's profile
+ */
 public class TeacherProfileActivity extends AppCompatActivity {
 
     // define local variables

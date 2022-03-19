@@ -21,6 +21,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+/**
+ * This class contains recycler view showing list of instruments waiting for teacher
+ * to confirm return
+ */
 public class ReturnInsTeacherActivity extends AppCompatActivity
 {
     // define local variables
@@ -49,7 +53,7 @@ public class ReturnInsTeacherActivity extends AppCompatActivity
     }
 
     /**
-     * This method populates all vehicles from firebase to recyclerview
+     * This method populates all instruments from firebase to recyclerview
      */
     public void getAndPopulateData(){
 

@@ -2,8 +2,8 @@
     <string name="app_name">MusicEquipmentBooking</string>
 
     <string-array name="userTypes">
-        <item>Teacher</item>
         <item>Student</item>
+        <item>Teacher</item>
     </string-array>
     <string name="title_activity_instrument_return_profile">InstrumentReturnProfileActivity</string>
     <!-- Strings used for fragments for navigation -->
