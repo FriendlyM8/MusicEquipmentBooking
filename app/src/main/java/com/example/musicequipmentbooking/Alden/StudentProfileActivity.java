@@ -10,9 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.musicequipmentbooking.Adrian.InstrumentsListActivity;
 import com.example.musicequipmentbooking.R;
-import com.example.musicequipmentbooking.Ryan.AddInstrumentsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +22,6 @@ public class StudentProfileActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
-
     private TextView displayUserText;
 
     @Override
@@ -40,15 +37,13 @@ public class StudentProfileActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_student_profile);
 
-
-
         firestore.collection("Users").document(userIDString).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot ds = task.getResult();
                     CISUser curUser = ds.toObject(CISUser.class);
-                    String email = curUser.getEmail();
+                    String email = user.getEmail(); // error with curUser.getEmail();
                     displayUserText = findViewById(R.id.displayUserText);
                     Log.d("StudentProfileActivity", "Current user email"+ email);
                     displayUserText.setText("WELCOME BACK, "+ email);

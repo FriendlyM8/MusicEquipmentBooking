@@ -76,7 +76,7 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
 
         // locate the vehicle object to update on firebase
-        firestore.collection("Vehicles")
+        firestore.collection("Instruments")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

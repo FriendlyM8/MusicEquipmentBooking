@@ -28,6 +28,7 @@ public class CISInstrument {
         this.instrumentBorrower = instrumentBorrower;
         this.borrowedStatus = borrowedStatus;
         this.returnedChecked = returnedChecked;
+
     }
 
     public String getInstrumentType() {

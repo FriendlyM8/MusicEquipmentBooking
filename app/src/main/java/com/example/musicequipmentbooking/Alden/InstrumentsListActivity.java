@@ -1,4 +1,4 @@
-package com.example.musicequipmentbooking.Adrian;
+package com.example.musicequipmentbooking.Alden;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,9 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.musicequipmentbooking.Alden.AuthActivity;
-import com.example.musicequipmentbooking.Alden.CISInstrument;
-import com.example.musicequipmentbooking.Alden.StudentProfileActivity;
+import com.example.musicequipmentbooking.Adrian.BorrowActivity;
 import com.example.musicequipmentbooking.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +22,9 @@ import java.util.ArrayList;
 
 /**
  * This class contains recycler view showing list of all instruments
+ * This class is written jointly by Alden and Adrian
+ * Alden wrote the RecyclerView and database connection portion
+ * Adrian added OnClick feature to the RecyclerView
  */
 public class InstrumentsListActivity extends AppCompatActivity {
 
@@ -57,9 +58,8 @@ public class InstrumentsListActivity extends AppCompatActivity {
      */
     public void getAndPopulateData(){
 
-        System.out.println("*** at begining of getAndPopulateData");
-
         // retrieve all Vehicles from Firebase
+        // this part is written by Alden
         firestore.collection("Instruments")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -72,10 +72,15 @@ public class InstrumentsListActivity extends AppCompatActivity {
                             insList = new ArrayList<CISInstrument>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                insList.add(document.toObject(CISInstrument.class));
+                                System.out.println("*** borrowedStatus: "+document.get("borrowedStatus"));
+                                if(document.get("borrowedStatus").equals(false))
+                                {
+                                    insList.add(document.toObject(CISInstrument.class));
+                                }
                             }
 
                             // set RV to display contents from arraylist
+                            // this part is written by Adrian
                             setOnClickListener();  // for RV click, initialize the listener
                             InstrumentListAdapter myAdaptor = new InstrumentListAdapter(insList, listener); // include onClick listener
                             myRecyclerView.setAdapter(myAdaptor);
@@ -91,6 +96,7 @@ public class InstrumentsListActivity extends AppCompatActivity {
 
     /**
      * This method is onClickListener for RV click to show instrument profile
+     * This method is written by Adrian
      */
     private void setOnClickListener()
     {
@@ -115,7 +121,6 @@ public class InstrumentsListActivity extends AppCompatActivity {
         };
     }
 
-    //Allow users to sign out
     public void signOut(View v) {
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, AuthActivity.class);

@@ -27,8 +27,9 @@ public class CISUser {
         this.instrumentsBorrowed = instrumentsBorrowed;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmail()
+    {
+            return email;
     }
 
     public void setEmail(String email) {

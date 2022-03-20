@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.musicequipmentbooking.Adrian.InstrumentListAdapter;
 import com.example.musicequipmentbooking.Adrian.TeacherProfileActivity;
 import com.example.musicequipmentbooking.R;
 import com.google.android.gms.tasks.OnCompleteListener;

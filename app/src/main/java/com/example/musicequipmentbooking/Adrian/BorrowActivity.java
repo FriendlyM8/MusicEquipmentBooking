@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.Alden.CISUser;
+import com.example.musicequipmentbooking.Alden.InstrumentsListActivity;
 import com.example.musicequipmentbooking.Alden.StudentProfileActivity;
 import com.example.musicequipmentbooking.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,7 +46,7 @@ public class BorrowActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
 
         // link layout items to parameter
-        TextView typeText = findViewById(R.id.BI_id);
+        TextView typeText = findViewById(R.id.BI_type);
         TextView idText = findViewById(R.id.BI_id);
         TextView daysText = findViewById(R.id.BI_days_limit);
 
@@ -66,14 +67,14 @@ public class BorrowActivity extends AppCompatActivity {
         daysText.setText(insDaysString);
     }
 
-    public void returnCheck(View v)
+    public void borrowButton(View v)
     {
         // connect to firebase
         System.out.println("***** At returnCheck method");
         firestore = FirebaseFirestore.getInstance();
 
-        // locate the vehicle object to update on firebase
-        firestore.collection("Vehicles")
+        // locate the instrument object to update on firebase
+        firestore.collection("Instruments")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -85,13 +86,13 @@ public class BorrowActivity extends AppCompatActivity {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 myInsObj = document.toObject(CISInstrument.class);
 
-                                // Found the Vehicle object
+                                // Found the Instrument object
                                 if(insID.equals(myInsObj.getInstrumentID()))
                                 {
                                     System.out.println("inside If loop found insID : "+myInsObj.getInstrumentID());
 
                                     // Switch borrow status
-                                    myInsObj.setBorrowedStatus(false);
+                                    myInsObj.setBorrowedStatus(true);
 
                                     // call method to update this object on Firebase
                                     System.out.println("***** instrument doc now : "+document.getId());
