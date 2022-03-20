@@ -1,4 +1,4 @@
-package com.example.musicequipmentbooking.Alden;
+package com.example.musicequipmentbooking.Ryan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.musicequipmentbooking.Alden.AuthActivity;
+import com.example.musicequipmentbooking.Alden.CISUser;
+import com.example.musicequipmentbooking.Alden.InstrumentsListActivity;
 import com.example.musicequipmentbooking.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +27,10 @@ public class StudentProfileActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private TextView displayUserText;
 
+    /**
+     * This onCreate is for the text for displaying the current student user
+     * This method is written by Alden
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +59,17 @@ public class StudentProfileActivity extends AppCompatActivity {
         });
     }
 
+
     //Go to InstrumentsList Activity
     public void goInstrumentsListActivity(View v) {
         Intent startActivity = new Intent(this, InstrumentsListActivity.class);
         startActivity(startActivity);
     }
 
+    /**
+     * This signs the user out while bringing the user back to Auth Activity
+     * This method is written by Ryan
+     */
     public void signOut(View v) {
         //sign out the account and go back to AuthActivity
         FirebaseAuth.getInstance().signOut();
