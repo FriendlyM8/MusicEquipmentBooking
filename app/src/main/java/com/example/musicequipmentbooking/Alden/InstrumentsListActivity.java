@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.musicequipmentbooking.Adrian.BorrowActivity;
 import com.example.musicequipmentbooking.R;
+import com.example.musicequipmentbooking.Ryan.StudentProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

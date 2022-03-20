@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicEquipmentBooking" >
         <activity
-            android:name=".Alden.StudentProfileActivity"
+            android:name=".Ryan.StudentProfileActivity"
             android:exported="false" />
         <activity
             android:name=".Adrian.BorrowActivity"
