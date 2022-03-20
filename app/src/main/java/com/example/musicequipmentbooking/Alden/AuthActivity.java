@@ -58,7 +58,6 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         //userType = spinner.getSelectedItem().toString();  //moved to updateUI from onCreate
     }
 
-
     /**
      * This method allows users to sign in with their emails and password.
      *
