@@ -2,6 +2,7 @@ package com.example.musicequipmentbooking.Adrian;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.Alden.CISUser;
 import com.example.musicequipmentbooking.R;
+import com.example.musicequipmentbooking.Ryan.StudentProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -20,10 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-/**
- * This class allows teacher to click a button to confirm instruments returned by students
- */
-public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
+public class StudentConfirmReturnActivity extends AppCompatActivity {
 
     // define local variables
     private FirebaseAuth mAuth;
@@ -40,16 +39,16 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_return_ins_teacher_check);
+        setContentView(R.layout.activity_student_confirm_return);
 
         // retrieve current user
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
         // link layout items to parameter
-        TextView typeText = findViewById(R.id.RC_Ins_type);
-        TextView idText = findViewById(R.id.RC_ins_id);
-        TextView daysText = findViewById(R.id.RC_days_borrowed);
+        TextView typeText = findViewById(R.id.RS_Ins_type);
+        TextView idText = findViewById(R.id.RS_ins_id);
+        TextView daysText = findViewById(R.id.RS_days_borrowed);
 
         // Bundle the data from RecyclerView
         Bundle extras = getIntent().getExtras();
@@ -68,7 +67,7 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
         daysText.setText(insDaysString);
     }
 
-    public void returnCheck(View v)
+    public void confirmReturn(View v)
     {
         // connect to firebase
         System.out.println("***** At returnCheck method");
@@ -92,8 +91,8 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
                                 {
                                     System.out.println("inside If loop found insID : "+myInsObj.getInstrumentID());
 
-                                    // mark the return checked flag
-                                    myInsObj.setReturnedChecked(true);
+                                    // Switch borrow status
+                                    myInsObj.setBorrowedStatus(false);
 
                                     // call method to update this object on Firebase
                                     System.out.println("***** instrument doc now : "+document.getId());
@@ -106,8 +105,8 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
                     }
                 });
 
-        // once done, navigate to teacher profile screen
-        Intent intent = new Intent(this, TeacherProfileActivity.class);
+        // once done, navigate to stident profile screen
+        Intent intent = new Intent(this, StudentProfileActivity.class);
         startActivity(intent);
     }
 

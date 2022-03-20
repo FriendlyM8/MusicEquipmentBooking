@@ -4,48 +4,48 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.R;
+import com.example.musicequipmentbooking.Ryan.StudentProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-/**
- * This class contains recycler view showing list of instruments waiting for teacher
- * to confirm return
- */
-public class ReturnInsTeacherActivity extends AppCompatActivity
-{
+public class StudentReturnActivity extends AppCompatActivity {
     // define local variables
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
+    private FirebaseUser mUser;
     private String TAG= "myTag";
     private RecyclerView myRecyclerView;
     private ArrayList<CISInstrument> insList;
-    private ReturnInsTeacherAdapter.RecyclerViewClickListener listener;  // for RV click
+    private StudentReturnAdapter.RecyclerViewClickListener listener;  // for RV click
     private String insDocID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_return_ins_teacher);
+        setContentView(R.layout.activity_student_return);
 
         // retrieve current user and link Firebase
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        mUser = mAuth.getCurrentUser();
 
         // link the recyclerView layout item to variable
-        myRecyclerView = findViewById(R.id.returnInsTeacherRV);
+        myRecyclerView = findViewById(R.id.SR_RV);
 
         // call method to populate vehicle data to RV
         getAndPopulateData();
@@ -71,24 +71,25 @@ public class ReturnInsTeacherActivity extends AppCompatActivity
                             insList = new ArrayList<CISInstrument>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                if(document.get("borrowedStatus").equals(false))
+                                //RV only show instruments borrowed by the student and not returned
+                                if(document.get("borrowedStatus").equals(true))
                                 {
-                                  //  if(document.get("returnedChecked").equals(false))
-                                  //  {
-                                      insList.add(document.toObject(CISInstrument.class));
-                                  //  }
+                                    if(document.get("instrumentBorrower").equals(mUser.getEmail()))
+                                    {
+                                        insList.add(document.toObject(CISInstrument.class));
+                                    }
                                 }
                             }
 
                             // set RV to display contents from arraylist
                             setOnClickListener();  // for RV click, initialize the listener
-                            ReturnInsTeacherAdapter myAdaptor = new ReturnInsTeacherAdapter(insList, listener); // include onClick listener
+                            StudentReturnAdapter myAdaptor = new StudentReturnAdapter(insList, listener); // include onClick listener
                             myRecyclerView.setAdapter(myAdaptor);
-                            myRecyclerView.setLayoutManager(new LinearLayoutManager(ReturnInsTeacherActivity.this));
+                            myRecyclerView.setLayoutManager(new LinearLayoutManager(StudentReturnActivity.this));
 
                         }
                         else
-                            {
+                        {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
@@ -101,14 +102,14 @@ public class ReturnInsTeacherActivity extends AppCompatActivity
     private void setOnClickListener()
     {
         System.out.println("*** at setOnclickListener #1");
-        listener = new ReturnInsTeacherAdapter.RecyclerViewClickListener()
+        listener = new StudentReturnAdapter.RecyclerViewClickListener()
         {
             @Override
             public void onClick (View v, int position)
             {
                 // vehicle information to pass to VehicleProfileActivity intent
                 System.out.println("*** at setOnclickListner1.5");
-                Intent intent = new Intent(getApplicationContext(), ReturnInsTeacherCheckActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StudentConfirmReturnActivity.class);
 
                 intent.putExtra("type", insList.get(position).getInstrumentType());
                 intent.putExtra("id", insList.get(position).getInstrumentID());
@@ -121,10 +122,10 @@ public class ReturnInsTeacherActivity extends AppCompatActivity
         };
     }
 
-    public void backToTeacherProfile(View v)
+    public void backToStudentProfile(View v)
     {
         // pass the vehicle information to next intent
-        Intent intent = new Intent(getApplicationContext(), TeacherProfileActivity.class);
+        Intent intent = new Intent(getApplicationContext(), StudentProfileActivity.class);
         startActivity(intent);
     }
 }

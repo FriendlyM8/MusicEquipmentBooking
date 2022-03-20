@@ -93,6 +93,8 @@ public class BorrowActivity extends AppCompatActivity {
 
                                     // Switch borrow status
                                     myInsObj.setBorrowedStatus(true);
+                                    myInsObj.setReturnedChecked(false);
+                                    myInsObj.setInstrumentBorrower(mUser.getEmail());
 
                                     // call method to update this object on Firebase
                                     System.out.println("***** instrument doc now : "+document.getId());

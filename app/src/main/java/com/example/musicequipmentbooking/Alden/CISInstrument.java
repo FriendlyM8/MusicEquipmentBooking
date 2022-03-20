@@ -26,7 +26,7 @@ public class CISInstrument {
         this.instrumentDaysBorrowed = instrumentDaysBorrowed;
         this.instrumentBorrowLimit = instrumentBorrowLimit;
         this.instrumentBorrower = instrumentBorrower;
-        this.borrowedStatus = borrowedStatus;
+        this.borrowedStatus = borrowedStatus;  //false means not borrowed, true means borrowed
         this.returnedChecked = returnedChecked;
 
     }

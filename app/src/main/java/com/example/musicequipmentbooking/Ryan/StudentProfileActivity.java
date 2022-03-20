@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.musicequipmentbooking.Adrian.StudentReturnActivity;
 import com.example.musicequipmentbooking.Alden.AuthActivity;
 import com.example.musicequipmentbooking.Alden.CISUser;
 import com.example.musicequipmentbooking.Alden.InstrumentsListActivity;
@@ -63,6 +64,11 @@ public class StudentProfileActivity extends AppCompatActivity {
     //Go to InstrumentsList Activity
     public void goInstrumentsListActivity(View v) {
         Intent startActivity = new Intent(this, InstrumentsListActivity.class);
+        startActivity(startActivity);
+    }
+
+    public void goStudentReturnActivity(View v) {
+        Intent startActivity = new Intent(this, StudentReturnActivity.class);
         startActivity(startActivity);
     }
 
