@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.musicequipmentbooking.Alden.CISUser;
 import com.example.musicequipmentbooking.R;
+import com.example.musicequipmentbooking.Ryan.AddInstrumentsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -81,4 +82,9 @@ public class TeacherProfileActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void addInstrument(View v)
+    {
+        Intent intent = new Intent(this, AddInstrumentsActivity.class);
+        startActivity(intent);
+    }
 }

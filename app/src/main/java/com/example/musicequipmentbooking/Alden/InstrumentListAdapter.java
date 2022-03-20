@@ -1,4 +1,4 @@
-package com.example.musicequipmentbooking.Adrian;
+package com.example.musicequipmentbooking.Alden;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,13 +7,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.R;
 
 import java.util.ArrayList;
 
 /**
- * This class is recycler view used by InstrumentsListActivity
+ * This class is Adapter for recycler view used by InstrumentsListActivity
+ * This is written jointly by Alden and Adrian
+ * Alden wrote the part for Recycler View
+ * Adrian wrote the part for OnClick listener of the RecyclerView
  */
 public class InstrumentListAdapter extends RecyclerView.Adapter<InstrumentListAdapter.InstrumentListActivityHolder>
 {
@@ -26,11 +28,12 @@ public class InstrumentListAdapter extends RecyclerView.Adapter<InstrumentListAd
     {
         allInstruments = myInstruments;
         this.listener = listener; // for RV click
-        System.out.println("*** at end of Adaptor");
     }
 
     /**
      * This class is Activity Holder class for RecyclerView, with OnClickListener for click
+     * The part for Recycler View is written by Alden
+     * The part for OnClick listener is written by Adrian
      */
     public class InstrumentListActivityHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -48,6 +51,10 @@ public class InstrumentListAdapter extends RecyclerView.Adapter<InstrumentListAd
             borrowerEmailText = itemView.findViewById(R.id.insRecTextQuantity);
         }
 
+        /**
+         * This method implements the onClick listener
+         * This method is written by Adrian
+         */
         @Override
         public void onClick(View view)
         {
@@ -57,9 +64,7 @@ public class InstrumentListAdapter extends RecyclerView.Adapter<InstrumentListAd
 
     /**
      * This is the ViewHolder for the recycler view
-     * @param parent
-     * @param viewType
-     * @return
+     * This method is written by Alden
      */
 
     @NonNull
@@ -72,14 +77,13 @@ public class InstrumentListAdapter extends RecyclerView.Adapter<InstrumentListAd
 
     /**
      * This method pass the vehicle data to ViewHolder to display
-     * @param holder
-     * @param position
+     * This method is written by Alden
      */
     @Override
     public void onBindViewHolder(@NonNull InstrumentListAdapter.InstrumentListActivityHolder holder, int position) {
         CISInstrument v = allInstruments.get(position);
         holder.insTypeText.setText("    "+v.getInstrumentType());
-        holder.borrowerEmailText.setText("Borrower: "+v.getInstrumentBorrower());
+        holder.borrowerEmailText.setText("Max borrow days: "+v.getInstrumentBorrowLimit());
     }
 
     @Override
@@ -90,6 +94,7 @@ public class InstrumentListAdapter extends RecyclerView.Adapter<InstrumentListAd
 
     /**
      * This is the interface for OnClick listener
+     * This Interface is written by Adrian
      */
     public interface RecyclerViewClickListener
     {

@@ -53,8 +53,6 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener(this);
-        userType = spinner.getSelectedItem().toString();
     }
 
 
@@ -125,6 +123,9 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
     public void updateUI(FirebaseUser currentUser)
     {
         if (currentUser != null) {
+            spinner.setOnItemSelectedListener(this);
+            userType = spinner.getSelectedItem().toString();
+
             if(userType.equals("Teacher")){
                 Intent intent = new Intent(this, TeacherProfileActivity.class);
                 startActivity(intent);

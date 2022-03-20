@@ -37,7 +37,7 @@
             android:name=".Alden.InstrumentsList"
             android:exported="false" />
         <activity
-            android:name=".Adrian.InstrumentsListActivity"
+            android:name=".Alden.InstrumentsListActivity"
             android:exported="false" />
         <activity
             android:name=".Ryan.AddInstrumentsActivity"
