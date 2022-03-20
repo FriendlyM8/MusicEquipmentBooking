@@ -131,7 +131,7 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
                 Log.d("Auth Activity", "Intent to TeacherProfileActivity");
             }
             if(userType.equals("Student")){
-                Intent intent = new Intent(this, UserProfileActivity.class);
+                Intent intent = new Intent(this, StudentProfileActivity.class);
                 startActivity(intent);
                 Log.d("Auth Activity", "Intent to UserProfileActivity");
             }

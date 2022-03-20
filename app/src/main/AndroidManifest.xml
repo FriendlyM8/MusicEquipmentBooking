@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.musicequipmentbooking">
+    package="com.example.musicequipmentbooking" >
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MusicEquipmentBooking">
+        android:theme="@style/Theme.MusicEquipmentBooking" >
+        <activity
+            android:name=".Alden.StudentProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".Adrian.BorrowActivity"
             android:exported="true" />
@@ -28,9 +31,6 @@
             android:name=".Adrian.TeacherProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Alden.UserProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".Alden.InstrumentReturnActivity"
             android:exported="false" />
         <activity
@@ -47,7 +47,7 @@
             android:exported="false" />
         <activity
             android:name=".Alden.AuthActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

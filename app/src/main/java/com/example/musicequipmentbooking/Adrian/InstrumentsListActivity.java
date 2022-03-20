@@ -12,8 +12,8 @@ import android.view.View;
 
 import com.example.musicequipmentbooking.Alden.AuthActivity;
 import com.example.musicequipmentbooking.Alden.CISInstrument;
+import com.example.musicequipmentbooking.Alden.StudentProfileActivity;
 import com.example.musicequipmentbooking.R;
-import com.example.musicequipmentbooking.Alden.UserProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -123,7 +123,7 @@ public class InstrumentsListActivity extends AppCompatActivity {
     }
 
     public void backButton(View v){
-        Intent intent = new Intent(this, UserProfileActivity.class);
+        Intent intent = new Intent(this, StudentProfileActivity.class);
         startActivity(intent);
     }
 }
