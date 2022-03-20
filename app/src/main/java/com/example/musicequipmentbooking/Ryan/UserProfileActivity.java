@@ -32,65 +32,31 @@ public class UserProfileActivity extends AppCompatActivity {
     private FirebaseUser mUser;
     private FirebaseFirestore firestore;
 
-    private EditText userID;
-    private EditText name;
-    private EditText email;
-    private EditText userType;
-    private EditText password;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
-        mAuth = FirebaseAuth.getInstance();
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        firestore = FirebaseFirestore.getInstance();
-
-        userID = (EditText) findViewById(R.id.UserID);
-        name = (EditText) findViewById(R.id.UserName);
-        email = (EditText) findViewById(R.id.UserEmail);
-        userType = (EditText) findViewById(R.id.UserType);
-        password = (EditText) findViewById(R.id.Password);
+        setContentView(R.layout.activity_main);
     }
 
-    public void SignUp(View v) {
-        System.out.println("Sign Up!");
-        String userIDInput = userID.getText().toString();
-        String nameInput = name.getText().toString();
-        String emailInput = email.getText().toString();
-        String userTypeInput = userType.getText().toString();
-        String passwordInput = password.getText().toString();
-
-        mAuth.createUserWithEmailAndPassword(emailInput, passwordInput).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Log.d("SIGN UP", "createUserWithEmail: success");
-                    FirebaseUser mUser = mAuth.getCurrentUser();
-                    updateUI(mUser);
-                    //send the message to user
-                    Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully signed up by user! Welcome " + emailInput, Toast.LENGTH_LONG);
-                    messageUser.show();
-                } else {
-                    Log.w("SIGN UP", "createUserWithEmail: failure", task.getException());
-                    updateUI(null);
-                    //send the message to user
-                    Toast messageToUser = Toast.makeText(getApplicationContext(), "Sign up by user failed, maybe you have already signed up with this account.", Toast.LENGTH_LONG);
-                    messageToUser.show();
-                }
-            }
-        });
-        //store the information into the firebase database
-        //the firebase Authentication store the user
-        User currUser = new User(userIDInput, nameInput, emailInput, userTypeInput, passwordInput);
-        firestore.collection("User").document(nameInput).set(currUser);
+    //go to AddInstruments Activity
+    public void goAddInstrumentsActivity(View v) {
+        Intent startActivity = new Intent(this, com.example.musicequipmentbooking.AddInstrumentsActivity.class);
+        startActivity(startActivity);
     }
 
-    public void updateUI(FirebaseUser user) {
-        if (user != null) {
-            //go to MainActivity
-            Intent startPage = new Intent(this, MainActivity.class);
-            startActivity(startPage);
-        }
+    //go to InstrumentInfo Activity
+    public void goInstrumentInfoActivity(View v) {
+        Intent startActivity = new Intent(this, com.example.musicequipmentbooking.VehiclesInfoActivity.class);
+        startActivity(startActivity);
+    }
+
+    public void signOut(View v) {
+        //sign out the account and go back to AuthActivity
+        FirebaseAuth.getInstance().signOut();
+        Intent startActivity = new Intent(this, com.example.musicequipmentbooking.AuthActivity.class);
+        startActivity(startActivity);
+        //send message to user
+        Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully signed out with Email!", Toast.LENGTH_LONG);
+        messageUser.show();
     }
 }

@@ -9,156 +9,70 @@
     tools:context=".UserProfileActivity">
 
     <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="384dp"
-        android:text="Type:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="310dp"
-        android:text="Name:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="238dp"
-        android:text="UserID:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="462dp"
-        android:text="Password:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="174dp"
-        android:text="Email:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView22"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Create User"
+        android:text="Vehicle Options"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/UserID"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46" />
-
-    <EditText
-        android:id="@+id/UserID"
-        android:layout_width="253dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="231dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="eg: johniscool123"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/UserEmail"
-        android:layout_width="254dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="174dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="eg: john123@gmail.com"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.189" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button3"
         android:layout_width="200dp"
         android:layout_height="75dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="532dp"
+        android:layout_marginTop="124dp"
         android:backgroundTint="#000000"
-        android:onClick="SignUp"
-        android:text="Sign up"
+        android:onClick="goAddInstrumentsActivity"
+        android:text="Add Vehicle"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.251" />
 
-    <EditText
-        android:id="@+id/UserType"
-        android:layout_width="253dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="373dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="eg: student"
-        android:textAlignment="center"
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="168dp"
+        android:backgroundTint="#000000"
+        android:onClick="goInstrumentInfoActivity"
+        android:text="Vehicle Info"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintVertical_bias="0.406" />
 
-    <EditText
-        android:id="@+id/UserName"
-        android:layout_width="253dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="301dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="eg: John"
-        android:textAlignment="center"
+    <Button
+        android:id="@+id/signOut"
+        android:layout_width="162dp"
+        android:layout_height="82dp"
+        android:backgroundTint="#000000"
+        android:onClick="signOut"
+        android:text="Sign out"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/Password"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="454dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="password"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.824" />
 </androidx.constraintlayout.widget.ConstraintLayout>
