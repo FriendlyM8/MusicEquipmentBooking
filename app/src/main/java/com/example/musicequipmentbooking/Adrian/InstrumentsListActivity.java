@@ -12,13 +12,11 @@ import android.view.View;
 
 import com.example.musicequipmentbooking.Alden.AuthActivity;
 import com.example.musicequipmentbooking.Alden.CISInstrument;
-import com.example.musicequipmentbooking.MainActivity;
 import com.example.musicequipmentbooking.R;
-import com.example.musicequipmentbooking.Ryan.UserProfileActivity;
+import com.example.musicequipmentbooking.Alden.UserProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;

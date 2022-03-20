@@ -28,7 +28,7 @@
             android:name=".Adrian.TeacherProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Ryan.UserProfileActivity"
+            android:name=".Alden.UserProfileActivity"
             android:exported="false" />
         <activity
             android:name=".Alden.InstrumentReturnActivity"

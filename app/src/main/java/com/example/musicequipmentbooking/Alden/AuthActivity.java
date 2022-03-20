@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 
 import com.example.musicequipmentbooking.Adrian.TeacherProfileActivity;
 import com.example.musicequipmentbooking.R;
-import com.example.musicequipmentbooking.Ryan.UserProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

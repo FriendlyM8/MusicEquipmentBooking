@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.Alden.CISUser;
 import com.example.musicequipmentbooking.R;
-import com.example.musicequipmentbooking.Ryan.UserProfileActivity;
+import com.example.musicequipmentbooking.Alden.UserProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
