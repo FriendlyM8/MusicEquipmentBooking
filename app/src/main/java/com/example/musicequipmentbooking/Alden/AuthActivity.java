@@ -100,6 +100,7 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
                     updateUI(null);
                     FirebaseUser user = mAuth.getCurrentUser();
                     String userIDString = user.getUid();
+                    Log.d("AuthActivity", "UserType"+ userType);
 
                     if(userType.equals("Teacher")){
                         CISTeacher newUser = new CISTeacher(emailString, passwordString, userIDString, userType);
@@ -109,8 +110,8 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
                         CISUser newUser = new CISUser(emailString, passwordString, userIDString, userType, 0, null);
                         firestore.collection("Users").document(newUser.getUserID()).set(newUser);
                     }
-
-                } else {
+                }
+                else {
                     Log.w("SIGN UP", "createUserWithEmail:failure", task.getException());
                     updateUI(null);
                 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.musicequipmentbooking.Adrian.InstrumentsListActivity;
 import com.example.musicequipmentbooking.Adrian.ReturnInsTeacherActivity;
+import com.example.musicequipmentbooking.Alden.CISUser;
 import com.example.musicequipmentbooking.Alden.InstrumentReturnActivity;
 import com.example.musicequipmentbooking.MainActivity;
 import com.example.musicequipmentbooking.R;
@@ -53,38 +54,37 @@ public class UserProfileActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.Password);
     }
 
-    public void SignUp(View v) {
-        System.out.println("Sign Up!");
-        String userIDInput = userID.getText().toString();
-        String nameInput = name.getText().toString();
-        String emailInput = email.getText().toString();
-        String userTypeInput = userType.getText().toString();
-        String passwordInput = password.getText().toString();
-
-        mAuth.createUserWithEmailAndPassword(emailInput, passwordInput).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Log.d("SIGN UP", "createUserWithEmail: success");
-                    FirebaseUser mUser = mAuth.getCurrentUser();
-                    updateUI(mUser);
-                    //send the message to user
-                    Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully signed up by user! Welcome " + emailInput, Toast.LENGTH_LONG);
-                    messageUser.show();
-                } else {
-                    Log.w("SIGN UP", "createUserWithEmail: failure", task.getException());
-                    updateUI(null);
-                    //send the message to user
-                    Toast messageToUser = Toast.makeText(getApplicationContext(), "Sign up by user failed, maybe you have already signed up with this account.", Toast.LENGTH_LONG);
-                    messageToUser.show();
-                }
-            }
-        });
-        //store the information into the firebase database
-        //the firebase Authentication store the user
-        User currUser = new User(userIDInput, nameInput, emailInput, userTypeInput, passwordInput);
-        firestore.collection("User").document(nameInput).set(currUser);
-    }
+//    public void SignUp(View v) {
+//        System.out.println("Sign Up!");
+//        String userIDInput = userID.getText().toString();
+//        String nameInput = name.getText().toString();
+//        String emailInput = email.getText().toString();
+//        String userTypeInput = userType.getText().toString();
+//        String passwordInput = password.getText().toString();
+//
+//        mAuth.createUserWithEmailAndPassword(emailInput, passwordInput).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if (task.isSuccessful()) {
+//                    Log.d("SIGN UP", "createUserWithEmail: success");
+//                    FirebaseUser mUser = mAuth.getCurrentUser();
+//                    updateUI(mUser);
+//                    //send the message to user
+//                    Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully signed up by user! Welcome " + emailInput, Toast.LENGTH_LONG);
+//                    messageUser.show();
+//                } else {
+//                    Log.w("SIGN UP", "createUserWithEmail: failure", task.getException());
+//                    updateUI(null);
+//                    //send the message to user
+//                    Toast messageToUser = Toast.makeText(getApplicationContext(), "Sign up by user failed, maybe you have already signed up with this account.", Toast.LENGTH_LONG);
+//                    messageToUser.show();
+//                }
+//            }
+//        });
+//        //store the information into the firebase database
+//        //the firebase Authentication store the user
+//        firestore.collection("User").document(nameInput).set(currUser);
+//    }
 
     public void updateUI(FirebaseUser user) {
         if (user != null) {
