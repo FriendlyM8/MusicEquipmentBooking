@@ -52,6 +52,9 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.userTypes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
+        userType = spinner.getSelectedItem().toString();
     }
 
 
@@ -121,17 +124,16 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
     //If user is signed in or created, goes to next screen
     public void updateUI(FirebaseUser currentUser)
     {
-        if (currentUser != null)
-        {
-            spinner.setOnItemSelectedListener(this);
-            userType = spinner.getSelectedItem().toString();
+        if (currentUser != null) {
             if(userType.equals("Teacher")){
                 Intent intent = new Intent(this, TeacherProfileActivity.class);
                 startActivity(intent);
+                Log.d("Auth Activity", "Intent to TeacherProfileActivity");
             }
             if(userType.equals("Student")){
                 Intent intent = new Intent(this, UserProfileActivity.class);
                 startActivity(intent);
+                Log.d("Auth Activity", "Intent to UserProfileActivity");
             }
         }
     }
