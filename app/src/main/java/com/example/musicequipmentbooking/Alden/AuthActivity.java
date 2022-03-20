@@ -54,7 +54,7 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(this);
-        userType = spinner.getSelectedItem().toString();
+        //userType = spinner.getSelectedItem().toString();  //moved to updateUI from onCreate
     }
 
 
@@ -125,7 +125,7 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
     public void updateUI(FirebaseUser currentUser)
     {
         if (currentUser != null) {
-
+            userType = spinner.getSelectedItem().toString();
             if(userType.equals("Teacher")){
                 Intent intent = new Intent(this, TeacherProfileActivity.class);
                 startActivity(intent);
