@@ -9,8 +9,9 @@
 
     <Button
         android:id="@+id/backButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="117dp"
+        android:layout_height="39dp"
+        android:backgroundTint="#3F51B5"
         android:onClick="backButton"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,8 +23,9 @@
 
     <Button
         android:id="@+id/signOutButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="121dp"
+        android:layout_height="45dp"
+        android:backgroundTint="#3F51B5"
         android:onClick="signOut"
         android:text="SignOut"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,11 +40,12 @@
         android:layout_width="262dp"
         android:layout_height="105dp"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="New Instruments Returned"
-        android:textSize="34sp"
+        android:text="Instruments Returned"
+        android:textColor="#3F51B5"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.221"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.068" />

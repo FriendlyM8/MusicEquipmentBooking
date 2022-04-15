@@ -90,32 +90,34 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //Allow users to sign up with a Google account
     public void signUp(View v) {
-        System.out.println("Sign Up");
         String emailString = emailField.getText().toString();
         String passwordString = passwordField.getText().toString();
+        userType = spinner.getSelectedItem().toString();
+        System.out.println("Sign Up emil: "+emailString+" passwd: "+passwordString+" User type: "+userType);
 
         mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Log.d("SIGN UP", "Successfully signed up the user");
-                    updateUI(null);
                     FirebaseUser user = mAuth.getCurrentUser();
                     String userIDString = user.getUid();
                     Log.d("AuthActivity", "UserType"+ userType);
 
                     if(userType.equals("Teacher")){
+                        System.out.println("*** at signup Teacher clause");
                         CISTeacher newUser = new CISTeacher(emailString, passwordString, userIDString, userType);
                         firestore.collection("Users").document(newUser.getUserID()).set(newUser);
                     }
                     if(userType.equals("Student")){
+                        System.out.println("*** at signup Student clause");
                         CISUser newUser = new CISUser(emailString, passwordString, userIDString, userType, 0, null);
                         firestore.collection("Users").document(newUser.getUserID()).set(newUser);
                     }
+                    updateUI(user);
                 }
                 else {
                     Log.w("SIGN UP", "createUserWithEmail:failure", task.getException());
-                    updateUI(null);
                 }
             }
         });

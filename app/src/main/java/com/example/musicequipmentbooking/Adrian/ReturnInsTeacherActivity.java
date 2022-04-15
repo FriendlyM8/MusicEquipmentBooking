@@ -71,13 +71,14 @@ public class ReturnInsTeacherActivity extends AppCompatActivity
                             insList = new ArrayList<CISInstrument>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                if(document.get("borrowedStatus").equals(false))
-                                {
-                                  //  if(document.get("returnedChecked").equals(false))
-                                  //  {
+                                //if(document.get("borrowedStatus").equals(false))
+                                //{
+                                    if(document.get("returnedChecked").equals(false))
+                                    {
+                                        System.out.println("*****inside if");
                                       insList.add(document.toObject(CISInstrument.class));
-                                  //  }
-                                }
+                                    }
+                                //}
                             }
 
                             // set RV to display contents from arraylist

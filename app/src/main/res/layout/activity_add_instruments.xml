@@ -8,17 +8,6 @@
     tools:context=".Ryan.AddInstrumentsActivity">
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="487dp"
-        android:text="Price:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,29 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="300dp"
         android:text="Borrow limit:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/InstrumentPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="476dp"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/addPasswordText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/InstrumentID"
@@ -74,13 +45,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
 
     <EditText
         android:id="@+id/InstrumentBorrowLimit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="290dp"
         android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="Borrow limit"
@@ -117,27 +88,14 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="81dp"
         android:text="Add Instruments"
+        android:textColor="#3F51B5"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="589dp"
-        android:background="#000000"
-        android:backgroundTint="#000000"
-        android:text="Add"
-        app:iconTint="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="#000000" />
 
     <TextView
         android:id="@+id/textView4"
@@ -149,4 +107,30 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#3F51B5"
+        android:onClick="add_instrument"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InstrumentID" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="121dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#3F51B5"
+        android:onClick="backButton"
+        android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

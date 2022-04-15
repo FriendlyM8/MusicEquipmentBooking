@@ -12,13 +12,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Instruments"
-        android:textSize="48sp"
+        android:textColor="#3F51B5"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintVertical_bias="0.07" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/instrumentRecView"
@@ -30,14 +32,16 @@
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.341" />
+        app:layout_constraintVertical_bias="0.202" />
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="123dp"
+        android:layout_height="44dp"
+        android:backgroundTint="#3F51B5"
         android:onClick="backButton"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,12 +49,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintVertical_bias="0.864" />
 
     <Button
         android:id="@+id/signOutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="127dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#3F51B5"
         android:onClick="signOut"
         android:text="SignOut"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,5 +63,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.838" />
+        app:layout_constraintVertical_bias="0.775" />
 </androidx.constraintlayout.widget.ConstraintLayout>

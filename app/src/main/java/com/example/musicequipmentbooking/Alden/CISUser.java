@@ -12,13 +12,15 @@ public class CISUser {
     private String userID;
     private String userType;
     private int creditScore;
-    ArrayList instrumentsBorrowed = new ArrayList();
+    //ArrayList instrumentsBorrowed = new ArrayList();
+    private String instrumentsBorrowed;
 
     //No argument for firestore
     public CISUser(){
     }
 
-    public CISUser(String email, String password, String userID, String userType, int creditScore, ArrayList instrumentsBorrowed) {
+    public CISUser(String email, String password, String userID, String userType, int creditScore, String instrumentsBorrowed)
+    {
         this.email = email;
         this.password = password;
         this.userID = userID;
@@ -68,13 +70,17 @@ public class CISUser {
         this.creditScore = creditScore;
     }
 
-    public ArrayList getInstrumentsBorrowed() {
+    /** public ArrayList getInstrumentsBorrowed() {
+        return instrumentsBorrowed;
+    }**/
+
+    public String getInstrumentsBorrowed() {
         return instrumentsBorrowed;
     }
 
-    public void setInstrumentsBorrowed(ArrayList instrumentsBorrowed) {
+   /** public void setInstrumentsBorrowed(ArrayList instrumentsBorrowed) {
         this.instrumentsBorrowed = instrumentsBorrowed;
-    }
+    } **/
 
     @Override
     public String toString() {

@@ -80,8 +80,8 @@ public class ReturnInsTeacherAdapter extends RecyclerView.Adapter<ReturnInsTeach
     @Override
     public void onBindViewHolder(@NonNull ReturnInsTeacherActivityHolder holder, int position) {
         CISInstrument v = allInstruments.get(position);
-        holder.insTypeText.setText("    "+v.getInstrumentType());
-        holder.borrowerEmailText.setText("Borrower: "+v.getInstrumentBorrower());
+        holder.insTypeText.setText("  "+v.getInstrumentType());
+        holder.borrowerEmailText.setText(v.getInstrumentBorrower());
     }
 
     @Override

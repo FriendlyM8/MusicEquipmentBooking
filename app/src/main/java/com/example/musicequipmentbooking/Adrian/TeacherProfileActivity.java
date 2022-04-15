@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.musicequipmentbooking.Alden.AuthActivity;
 import com.example.musicequipmentbooking.Alden.CISUser;
 import com.example.musicequipmentbooking.R;
 import com.example.musicequipmentbooking.Ryan.AddInstrumentsActivity;
@@ -32,6 +33,7 @@ public class TeacherProfileActivity extends AppCompatActivity {
     private String TAG= "myTag";
     private CISUser currUserObj;
     TextView user_email;
+    TextView user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +46,11 @@ public class TeacherProfileActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
 
         // show currently signed in user name
-        user_email = (TextView) this.findViewById(R.id.TP_email);
-        user_email.setText(mUser.getEmail());
+        user_email = (TextView) this.findViewById(R.id.TP_Text);
+        user_email.setText("WELCOME BACK, teacher "+mUser.getEmail());
 
         // link layout items to variables
-        TextView user_id = findViewById(R.id.TP_ID);
+        //user_id = (TextView) this.findViewById(R.id.TP_ID);
 
         // retrieve user information from firebase
         firestore.collection("Users")
@@ -66,7 +68,9 @@ public class TeacherProfileActivity extends AppCompatActivity {
                                 if(mUser.getEmail().equals(myUserObj.getEmail()))
                                 {
                                     // display user information on screen
-                                    user_id.setText(myUserObj.getUserID());
+                                    String userID = myUserObj.getUserID();
+                                    System.out.println("matched user email, user ID is "+userID);
+                                    user_id.setText(userID);
                                 }
                             }
                         } else {
@@ -85,6 +89,12 @@ public class TeacherProfileActivity extends AppCompatActivity {
     public void addInstrument(View v)
     {
         Intent intent = new Intent(this, AddInstrumentsActivity.class);
+        startActivity(intent);
+    }
+
+    public void signOut(View v) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, AuthActivity.class);
         startActivity(intent);
     }
 }

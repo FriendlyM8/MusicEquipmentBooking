@@ -126,4 +126,11 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
                 });
         Log.d(TAG, "DocumentSnapshot updated with ID: " + docID);
     }
+
+    public void backToReturnList(View v)
+    {
+        // pass the vehicle information to next intent
+        Intent intent = new Intent(getApplicationContext(), ReturnInsTeacherActivity.class);
+        startActivity(intent);
+    }
 }

@@ -74,13 +74,23 @@ public class InstrumentsListActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 //RV only show instruments available for student to borrow
-                                if(document.get("borrowedStatus").equals(false))
+                                boolean myBorrowStatus = document.get("borrowedStatus").equals(false);
+                                boolean myReturnedStatus = document.get("returnedChecked").equals(true);
+
+                                if(myBorrowStatus && myReturnedStatus)
                                 {
-                                   // if(document.get("returnChecked").equals(true))
-                                   // {
-                                        insList.add(document.toObject(CISInstrument.class));
-                                   // }
+                                    System.out.println("*** inside IF");
+                                    insList.add(document.toObject(CISInstrument.class));
                                 }
+
+                    /**            if(document.get("borrowedStatus").equals(false))
+                                {
+                                    if(document.get("returnChecked").equals(true))
+                                    {
+                                        System.out.println("*** inside IF");
+                                        insList.add(document.toObject(CISInstrument.class));
+                                    }
+                                }**/
                             }
 
                             // set RV to display contents from arraylist
