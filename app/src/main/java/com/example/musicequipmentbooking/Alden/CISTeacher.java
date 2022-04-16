@@ -2,6 +2,9 @@ package com.example.musicequipmentbooking.Alden;
 
 import java.util.ArrayList;
 
+/**
+ * This is subclass of CISUser for user type teacher
+ */
 public class CISTeacher{
     private String email;
     private String password;

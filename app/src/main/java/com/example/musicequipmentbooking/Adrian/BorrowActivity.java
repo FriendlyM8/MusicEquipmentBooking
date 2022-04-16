@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.Alden.CISUser;
@@ -23,6 +24,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ * This class allows student to borrow an instrument
+ * It updates database Borrow Status flag and Return Checked flag
+ */
 public class BorrowActivity extends AppCompatActivity {
     // define local variables
     private FirebaseAuth mAuth;
@@ -107,12 +112,21 @@ public class BorrowActivity extends AppCompatActivity {
                     }
                 });
 
+        //message to user
+        Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully borrowed instrument", Toast.LENGTH_LONG);
+        messageUser.show();
+
         // once done, navigate to Return Instrument Info screen
         // can add toast to show borrowed successfully
         Intent intent = new Intent(this, StudentProfileActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method update Firebase with the provided docID with the input object
+     * @param docID
+     * @param v
+     */
     public void updateInsStatus(String docID, CISInstrument v)
     {
         System.out.println("***** docID is : "+docID);
@@ -129,6 +143,10 @@ public class BorrowActivity extends AppCompatActivity {
         Log.d(TAG, "DocumentSnapshot updated with ID: " + docID);
     }
 
+    /**
+     * This method allows user to click to go back to Instrument List
+     * @param v
+     */
     public void backButton(View v){
         Intent intent = new Intent(this, InstrumentsListActivity.class);
         startActivity(intent);

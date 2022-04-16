@@ -24,8 +24,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.UUID;
 
+/**
+ * This class allows teacher to add new instrument for students to borrow
+ */
 public class AddInstrumentsActivity extends AppCompatActivity
 {
+    // define local variable
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private FirebaseFirestore fireStoreRef;
@@ -42,6 +46,8 @@ public class AddInstrumentsActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_instruments);
+
+        // Firebase connection
         mAuth = FirebaseAuth.getInstance();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         fireStoreRef = FirebaseFirestore.getInstance();
@@ -49,14 +55,19 @@ public class AddInstrumentsActivity extends AppCompatActivity
         owner = mUser.getEmail();
         open = true;
 
+        // link layout items to local variables
         instrumenttype = (EditText) findViewById(R.id.InstrumentType);
         instrumentborrowlimit = (EditText) findViewById(R.id.InstrumentBorrowLimit);
         instrumentID = (EditText) findViewById(R.id.InstrumentID);
     }
 
+    /**
+     * This method updates Firebase to add the instrument object
+     * @param v
+     */
     public void add_instrument(View v)
     {
-        System.out.println("Add Instrument!");
+       // retrieve new instrument information from layout fields
         String TypeInput = instrumenttype.getText().toString();
         int BorrowInput = Integer.parseInt(instrumentborrowlimit.getText().toString());
         String instrumentIDInput = UUID.randomUUID().toString();
@@ -89,6 +100,11 @@ public class AddInstrumentsActivity extends AppCompatActivity
         Intent startPage = new Intent(this, TeacherProfileActivity.class);
         startActivity(startPage);
     }
+
+    /**
+     * This method allows user to click to go back to Teacher profile
+     * @param v
+     */
     public void backButton(View v){
         Intent intent = new Intent(this, TeacherProfileActivity.class);
         startActivity(intent);

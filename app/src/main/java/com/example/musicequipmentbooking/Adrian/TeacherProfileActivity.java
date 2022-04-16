@@ -21,7 +21,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 /**
- * This class shows teacher's profile
+ * This class shows teacher's basic information and buttons for teacher to carry ouf
+ * different functions
  */
 public class TeacherProfileActivity extends AppCompatActivity {
 
@@ -52,7 +53,8 @@ public class TeacherProfileActivity extends AppCompatActivity {
         // link layout items to variables
         //user_id = (TextView) this.findViewById(R.id.TP_ID);
 
-        // retrieve user information from firebase
+        // retrieve userType from Firebase to confirm the logged in user is a Teacher
+        /**
         firestore.collection("Users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -70,28 +72,40 @@ public class TeacherProfileActivity extends AppCompatActivity {
                                     // display user information on screen
                                     String userID = myUserObj.getUserID();
                                     System.out.println("matched user email, user ID is "+userID);
-                                    user_id.setText(userID);
+                                //    user_id.setText(userID);
                                 }
                             }
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
-                });
+                }); **/
     }
 
+    /**
+     * This method allows teacher to see instruments returned by students to check and confirm
+     * @param v
+     */
     public void seeReturns(View v)
     {
         Intent intent = new Intent(this, ReturnInsTeacherActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method allows teacher to add new instruments
+     * @param v
+     */
     public void addInstrument(View v)
     {
         Intent intent = new Intent(this, AddInstrumentsActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method allows teacher to click to sign out
+     * @param v
+     */
     public void signOut(View v) {
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, AuthActivity.class);

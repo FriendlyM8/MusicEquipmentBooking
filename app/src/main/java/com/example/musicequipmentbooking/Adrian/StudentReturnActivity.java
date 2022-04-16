@@ -23,6 +23,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+/**
+ * This class allows student to return instrument
+ */
 public class StudentReturnActivity extends AppCompatActivity {
     // define local variables
     private FirebaseAuth mAuth;
@@ -122,6 +125,10 @@ public class StudentReturnActivity extends AppCompatActivity {
         };
     }
 
+    /**
+     * This method allows user to click to go back to Student Profile
+     * @param v
+     */
     public void backToStudentProfile(View v)
     {
         // pass the vehicle information to next intent

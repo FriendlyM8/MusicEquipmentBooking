@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.Alden.CISUser;
@@ -68,6 +69,11 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
         daysText.setText(insDaysString);
     }
 
+    /**
+     * This parameter lists instruments returned by students and
+     * waiting for teacher to check and confirm
+     * @param v
+     */
     public void returnCheck(View v)
     {
         // connect to firebase
@@ -106,11 +112,20 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
                     }
                 });
 
+        //message to user
+        Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully confirmed return of instrument", Toast.LENGTH_LONG);
+        messageUser.show();
+
         // once done, navigate to teacher profile screen
         Intent intent = new Intent(this, TeacherProfileActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method update Firebase docID with the provided object
+     * @param docID
+     * @param v
+     */
     public void updateInsStatus(String docID, CISInstrument v)
     {
         System.out.println("***** docID is : "+docID);
@@ -127,6 +142,10 @@ public class ReturnInsTeacherCheckActivity extends AppCompatActivity {
         Log.d(TAG, "DocumentSnapshot updated with ID: " + docID);
     }
 
+    /**
+     * This method allows user to click to go back to list of instruments
+     * @param v
+     */
     public void backToReturnList(View v)
     {
         // pass the vehicle information to next intent

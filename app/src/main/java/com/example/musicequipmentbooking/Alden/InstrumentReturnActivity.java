@@ -22,8 +22,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+/**
+ * Need to cnofirm this is Student Return Activity and is replaced by StudentReturnActivity class
+ */
 public class InstrumentReturnActivity extends AppCompatActivity {
 
+    // define local variable
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     RecyclerView recView;
@@ -36,20 +40,24 @@ public class InstrumentReturnActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instrument_return);
 
+        // Firebased connection
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
         instrumentsList = new ArrayList<>();
         instrumentReturnedString = new ArrayList();
 
+        // defined recycler view adaptor
         InstrumentListAdapter myAdapter = new InstrumentListAdapter(instrumentsList, listener);
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
         Log.d("RecyclerView", "Rec View Success");
 
+        // get current user email
         FirebaseUser user = mAuth.getCurrentUser();
         String userIDString = user.getUid();
 
+        // Firebase connection to retrieve list of instruments the student borrow
         firestore.collection("Instruments").whereEqualTo("returnedChecked", false).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -70,7 +78,10 @@ public class InstrumentReturnActivity extends AppCompatActivity {
     }
 
 
- //   @Override
+    /**
+     * This is for user to click into an instrument to return
+     * @param position
+     */
     public void onInstrumentClick(int position) {
         instrumentsList.get(position);
         Intent intent = new Intent(this, InstrumentReturnActivity.class);
@@ -79,13 +90,20 @@ public class InstrumentReturnActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Allow users to sign out
+    /**
+     * This method allows user to click to signout
+     * @param v
+     */
     public void signOut(View v) {
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, AuthActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method allows user to click to go back to Teacher's profile
+     * @param v
+     */
     public void backButton(View v){
         Intent intent = new Intent(this, TeacherProfileActivity.class);
         startActivity(intent);

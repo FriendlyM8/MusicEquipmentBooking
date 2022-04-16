@@ -43,12 +43,15 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
+        // Firebase connection setting
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
+        // link the layout fields to local variables
         emailField = findViewById(R.id.addEmailText);
         passwordField = findViewById(R.id.addPasswordText);
 
+        // define drop down spinner for user type
         spinner = findViewById(R.id.userTypeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.userTypes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -63,7 +66,6 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
      *
      * @param v
      */
-    //Allow user to sign in with a Google account
     public void signIn(View v) {
         System.out.println("Log in");
         String emailString = emailField.getText().toString();
@@ -88,7 +90,10 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
-    //Allow users to sign up with a Google account
+    /**
+     * This method allows user to signup with email address
+     * @param v
+     */
     public void signUp(View v) {
         String emailString = emailField.getText().toString();
         String passwordString = passwordField.getText().toString();
@@ -123,24 +128,36 @@ public class AuthActivity extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
-    //If user is signed in or created, goes to next screen
+    /**
+     * If user is signed in or created, goes to next screen
+     * @param currentUser
+     */
     public void updateUI(FirebaseUser currentUser)
     {
         if (currentUser != null) {
             userType = spinner.getSelectedItem().toString();
             if(userType.equals("Teacher")){
                 Intent intent = new Intent(this, TeacherProfileActivity.class);
+                intent.putExtra("userType", "Teacher");
                 startActivity(intent);
                 Log.d("Auth Activity", "Intent to TeacherProfileActivity");
             }
             if(userType.equals("Student")){
                 Intent intent = new Intent(this, StudentProfileActivity.class);
+                intent.putExtra("userType", "Student");
                 startActivity(intent);
                 Log.d("Auth Activity", "Intent to UserProfileActivity");
             }
         }
     }
 
+    /**
+     * This method populates a toast to user when different user type is selected from spinner
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();

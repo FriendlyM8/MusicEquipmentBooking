@@ -15,6 +15,9 @@ import com.example.musicequipmentbooking.R;
 
 import java.util.ArrayList;
 
+/**
+ * This class is the Adaptor for Recycler View for Student Return Activity
+ */
 public class StudentReturnAdapter extends RecyclerView.Adapter<StudentReturnAdapter.StudentReturnActivityHolder> {
 
     // defines local variable

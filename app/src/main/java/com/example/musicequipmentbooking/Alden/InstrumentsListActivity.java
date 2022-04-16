@@ -135,12 +135,20 @@ public class InstrumentsListActivity extends AppCompatActivity {
         };
     }
 
+    /**
+     * This method allows user to click to signout
+     * @param v
+     */
     public void signOut(View v) {
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, AuthActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method allows user to click to return to Student profile
+     * @param v
+     */
     public void backButton(View v){
         Intent intent = new Intent(this, StudentProfileActivity.class);
         startActivity(intent);

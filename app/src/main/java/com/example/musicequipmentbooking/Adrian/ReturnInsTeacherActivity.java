@@ -122,6 +122,10 @@ public class ReturnInsTeacherActivity extends AppCompatActivity
         };
     }
 
+    /**
+     * This method allows user to click to go back to Teacher Profile
+     * @param v
+     */
     public void backToTeacherProfile(View v)
     {
         // pass the vehicle information to next intent

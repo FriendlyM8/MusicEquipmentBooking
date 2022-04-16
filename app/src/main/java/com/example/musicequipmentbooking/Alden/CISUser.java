@@ -15,10 +15,11 @@ public class CISUser {
     //ArrayList instrumentsBorrowed = new ArrayList();
     private String instrumentsBorrowed;
 
-    //No argument for firestore
+    // No argument for firestore
     public CISUser(){
     }
 
+    // constructor
     public CISUser(String email, String password, String userID, String userType, int creditScore, String instrumentsBorrowed)
     {
         this.email = email;

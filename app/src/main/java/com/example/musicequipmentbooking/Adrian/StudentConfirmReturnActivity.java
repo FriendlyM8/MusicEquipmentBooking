@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.musicequipmentbooking.Alden.CISInstrument;
 import com.example.musicequipmentbooking.Alden.CISUser;
@@ -22,6 +23,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ * This class allows student to confirm to return an instrument
+ */
 public class StudentConfirmReturnActivity extends AppCompatActivity {
 
     // define local variables
@@ -67,6 +71,11 @@ public class StudentConfirmReturnActivity extends AppCompatActivity {
         daysText.setText(insDaysString);
     }
 
+    /**
+     * This method is activated when user click Confirm Return button
+     * It updates Firebase with the Borrow Status of the instrument
+     * @param v
+     */
     public void confirmReturn(View v)
     {
         // connect to firebase
@@ -105,11 +114,20 @@ public class StudentConfirmReturnActivity extends AppCompatActivity {
                     }
                 });
 
+        //message to user
+        Toast messageUser = Toast.makeText(getApplicationContext(), "Successfully returned instrument", Toast.LENGTH_LONG);
+        messageUser.show();
+
         // once done, navigate to stident profile screen
         Intent intent = new Intent(this, StudentProfileActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This instrument update Firebase docID with the provided object
+     * @param docID
+     * @param v
+     */
     public void updateInsStatus(String docID, CISInstrument v)
     {
         System.out.println("***** docID is : "+docID);
